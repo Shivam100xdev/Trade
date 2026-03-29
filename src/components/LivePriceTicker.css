@@ -1,0 +1,134 @@
+.live-ticker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.live-price-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  transition: border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.live-price-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.live-price-card.up {
+  border-color: rgba(0, 255, 136, 0.4);
+}
+
+.live-price-card.up::before {
+  background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+  opacity: 1;
+}
+
+.live-price-card.down {
+  border-color: rgba(255, 61, 107, 0.4);
+}
+
+.live-price-card.down::before {
+  background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+  opacity: 1;
+}
+
+.lpc-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.coin-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.lpc-names {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.lpc-symbol {
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+.lpc-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.lpc-badge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.lpc-price {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.price-flash-up {
+  color: var(--accent-green) !important;
+}
+
+.price-flash-down {
+  color: var(--accent-red) !important;
+}
+
+.lpc-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lpc-live-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+@media (max-width: 480px) {
+  .live-ticker-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lpc-price {
+    font-size: 22px;
+  }
+}
